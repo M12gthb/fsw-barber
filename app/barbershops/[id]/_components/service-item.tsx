@@ -3,7 +3,14 @@
 import { Button } from "@/app/_components/ui/button";
 import { Calendar } from "@/app/_components/ui/calendar";
 import { Card, CardContent } from "@/app/_components/ui/card";
-import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/app/_components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/app/_components/ui/sheet";
 import { Barbershop, Booking, Service } from "@prisma/client";
 import { ptBR } from "date-fns/locale";
 import { signIn, useSession } from "next-auth/react";
@@ -23,7 +30,11 @@ interface ServiceItemProps {
   isAuthenticated: boolean;
 }
 
-const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps) => {
+const ServiceItem = ({
+  service,
+  barbershop,
+  isAuthenticated,
+}: ServiceItemProps) => {
   const router = useRouter();
 
   const { data } = useSession();
@@ -157,12 +168,12 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   </Button>
                 </SheetTrigger>
 
-                <SheetContent className="p-0">
+                <SheetContent className="p-0 overflow-y-auto">
                   <SheetHeader className="text-left px-5 py-6 border-b border-solid border-secondary">
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
 
-                  <div className="py-6">
+                  <div className="py-1 overflow-y-auto">
                     <Calendar
                       mode="single"
                       selected={date}
@@ -197,7 +208,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
 
                   {/* Mostrar lista de horários apenas se alguma data estiver selecionada */}
                   {date && (
-                    <div className="flex gap-3 overflow-x-auto py-6 px-5 border-t border-solid border-secondary [&::-webkit-scrollbar]:hidden">
+                    <div className="flex gap-3 overflow-x-auto py-2 px-5 border-t border-solid border-secondary [&::-webkit-scrollbar]:hidden">
                       {timeList.map((time) => (
                         <Button
                           onClick={() => handleHourClick(time)}
@@ -211,7 +222,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                     </div>
                   )}
 
-                  <div className="py-6 px-5 border-t border-solid border-secondary">
+                  <div className="py-2 px-5 border-t border-solid border-secondary">
                     <Card>
                       <CardContent className="p-3 gap-3 flex flex-col">
                         <div className="flex justify-between">
@@ -252,8 +263,13 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   </div>
 
                   <SheetFooter className="px-5">
-                    <Button onClick={handleBookingSubmit} disabled={!hour || !date || submitIsLoading}>
-                      {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    <Button
+                      onClick={handleBookingSubmit}
+                      disabled={!hour || !date || submitIsLoading}
+                    >
+                      {submitIsLoading && (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      )}
                       Confirmar reserva
                     </Button>
                   </SheetFooter>
