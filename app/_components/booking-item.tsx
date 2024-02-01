@@ -5,11 +5,9 @@ import { Card, CardContent } from "./ui/card";
 const BookingItem = () => {
   return (
     <Card>
-      <CardContent className="px-5 flex justify-between py-0">
+      <CardContent className="p-5 flex justify-between py-0">
         <div className="flex flex-col gap-2 py-5">
-          <Badge className="bg-[#221C3D] text-primary hover:bg-[#221C3D] w-fit">
-            Confirmado
-          </Badge>
+          <Badge className="bg-[#221C3D] text-primary hover:bg-[#221C3D] w-fit">Confirmado</Badge>
           <h2 className="font-bold">Corte de Cabelo</h2>
 
           <div className="flex items-center gap-2">
@@ -23,10 +21,10 @@ const BookingItem = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center px-2 border-l border-solid border-secondary">
-          <p className="text-sm ml-4">Fevereiro</p>
-          <p className="text-2xl ml-4">06</p>
-          <p className="text-sm ml-4">09:45</p>
+        <div className="flex flex-col items-center justify-center px-3 border-l border-solid border-secondary">
+          <p className="text-sm">Fevereiro</p>
+          <p className="text-2xl">06</p>
+          <p className="text-sm">09:45</p>
         </div>
       </CardContent>
     </Card>
